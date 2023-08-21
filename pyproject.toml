@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pytetris"
+version = "1.0.0"
+description = ""
+authors = ["Raffaele Cigni <rcigni@byte-code.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.10"
+arcade = "~2.6.17"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "~7.4.0"
+pytest-watch = "~4.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
