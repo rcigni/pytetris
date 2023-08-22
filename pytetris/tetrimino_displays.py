@@ -8,7 +8,7 @@ from pytetris.logic.tetris_state import TetrisArea
 
 
 class PiecesWindow(arcade.Window):
-    """ View all the """
+    """ View all the tetriminos displayed in the screen."""
 
     def __init__(self, width, height, title):
         super().__init__(width, height, title)

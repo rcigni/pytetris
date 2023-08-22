@@ -12,6 +12,8 @@ From the home directory of the project run `poetry install` to install the depen
 
  * `poetry run pytest` to run all tests in the project once. 
  * `poetry run ptw` to run all tests in the project and watch for changes.
+ * `poetry run pytest --cov=pytetris --cov-branch tests/` to run all tests in the project and get a coverage report.
+ * `poetry run pytest --cov=pytetris --cov-branch --cov-report html tests/` to run all tests in the project and get a coverage report in html format.
 
 ### Run the Game 
 

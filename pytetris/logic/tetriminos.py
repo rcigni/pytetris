@@ -110,27 +110,17 @@ SQUARE_SHAPES[TO.DOWN] = SQUARE_SHAPES[TO.UP]
 SQUARE_SHAPES[TO.RIGHT] = SQUARE_SHAPES[TO.UP]
 SQUARE_SHAPES[TO.LEFT] = SQUARE_SHAPES[TO.UP]
 
-class SquareTetrimino(Tetrimino):
-
-    def squares(self):
-        return SQUARE_SHAPES[self.orientation]
+SHAPES = {
+    TT.STICK: STICK_SHAPES,
+    TT.L1: L1_SHAPES,
+    TT.L2: L2_SHAPES,
+    TT.T: T_SHAPES,
+    TT.S1: S1_SHAPES,
+    TT.S2: S2_SHAPES,
+    TT.SQUARE: SQUARE_SHAPES
+}
 
 def new_tetrimino_by_type(piece_type: TT, orientation: TO = TO.UP) -> Tetrimino:
     color = COLORs[piece_type]
-    match piece_type:
-        case TT.STICK:
-            return Tetrimino(orientation, color, STICK_SHAPES)
-        case TT.L1:
-            return Tetrimino(orientation, color, L1_SHAPES)
-        case TT.L2:
-            return Tetrimino(orientation, color, L2_SHAPES)
-        case TT.T:
-            return Tetrimino(orientation, color, T_SHAPES)
-        case TT.S1:
-            return Tetrimino(orientation, color, S1_SHAPES)
-        case TT.S2:
-            return Tetrimino(orientation, color, S2_SHAPES)
-        case TT.SQUARE:
-            return Tetrimino(orientation, color, SQUARE_SHAPES)
-        case _:
-            raise ValueError(f"Invalid piece type ${piece_type}")
+    shape = SHAPES[piece_type]
+    return Tetrimino(orientation, color, shape)

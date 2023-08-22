@@ -43,7 +43,14 @@ class MyTetrisWindow(arcade.Window):
         self.game = new_game(leaders)
         self.time = 0
 
-        self.background_music = BackgroundMusic(lambda: self.game.game_status == GameStatus.GAME_ON)
+        def music_speed():
+            round_len = self.game.stats.get_round_len()
+            return 1.0 / (round_len + 0.3) if round_len < 0.7 else 1.0
+
+        self.background_music = BackgroundMusic(
+            get_music_on=lambda: self.game.game_status == GameStatus.GAME_ON,
+            get_music_speed=music_speed
+        )
 
         # create the views and connect them to the model with lambdas  (lazy evaluation)
         self.views: list[View] = [
@@ -66,7 +73,7 @@ class MyTetrisWindow(arcade.Window):
                 self.time -= round_len
                 self.game.next_round()
 
-        self.background_music.on_update()
+        self.background_music.on_update(delta_time)
 
     def on_key_press(self, key: int, modifiers: int):
         match self.game.game_status:
